@@ -1,7 +1,12 @@
 <template>
+  <!-- نمایش دیتا از App.vue به کمک
+     متود provide.inject -->
+  <h2>{{ user }}</h2>
+  <!-- نمایش دیتا همراه با html -->
+   <slot name="ul"></slot>
+   <hr>
   <!-- نمایش دادن دیتا بصورت آرایه -->
   <!-- <h1>{{userName}}</h1> -->
-
   <ul>
     <li>{{ userData.name }}</li>
     <li>{{ userData.lastname }}</li>
@@ -21,23 +26,19 @@ export default {
     userData: Object,
   },
 
-   data() {
-       return {
-           name : 'JustLearn'
-       }
+  inject: ['user'],
 
-   },
+  data() {
+    return {
+      name: 'JustLearn',
+    }
+  },
 
-    methods: {
-        sendData(){
-            this.$emit('emitChild' , this.name)
-        }
+  methods: {
+    sendData() {
+      this.$emit('emitChild', this.name)
     },
-
-
-
-
-
+  },
 }
 </script>
 
